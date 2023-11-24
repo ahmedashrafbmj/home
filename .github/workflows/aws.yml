@@ -26,5 +26,5 @@ jobs:
         REMOTE_USER: ${{ secrets.EC2_USERNAME }}
         REMOTE_PORT: 22  # or the port you use for SSH
         SOURCE: "."  # assuming your code is in the root directory of the repository
-        TARGET: "/frontend/react-app"  # replace with the actual path on your EC2 instance
-        ARGS: '-o StrictHostKeyChecking=no'  # optional, use only if needed
+        TARGET: "/frontend/react-app/"  # replace with the actual path on your EC2 instance
+        ARGS: '-avz --delete -e "ssh -p 22 -i /home/runner/.ssh/deploy_key -o StrictHostKeyChecking=no"'  # specify the rsync options
