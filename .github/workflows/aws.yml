@@ -21,7 +21,10 @@ jobs:
     - name: Deploy to EC2
       uses: easingthemes/ssh-deploy@v2.1.5
       with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USERNAME }}
-        key: ${{ secrets.EC2_PRIVATE_KEY }}
-        script: 'cd /frontend && git pull && npm install && npm run build'
+        SSH_PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
+        REMOTE_HOST: ${{ secrets.EC2_HOST }}
+        REMOTE_USER: ${{ secrets.EC2_USERNAME }}
+        REMOTE_PORT: 22  # or the port you use for SSH
+        SOURCE: "."  # assuming your code is in the root directory of the repository
+        TARGET: "/frontend/react-app"  # replace with the actual path on your EC2 instance
+        ARGS: '-o StrictHostKeyChecking=no'  # optional, use only if needed
