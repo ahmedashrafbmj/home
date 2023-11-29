@@ -27,4 +27,4 @@ jobs:
         REMOTE_PORT: 22
         SOURCE: "."
         TARGET: "/frontend/react-app/"
-        ARGS: '-avz --delete -e "ssh -p 22 -i /home/runner/.ssh/deploy_key -o StrictHostKeyChecking=no"'
+        ARGS: '-avz --delete -e "ssh -p 22 -i /home/runner/.ssh/authorized_keys -o StrictHostKeyChecking=no"'
